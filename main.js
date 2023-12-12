@@ -154,7 +154,7 @@ function displayComments(comments) {
     let updateButton = document.createElement("button");
     updateButton.classList.add("update-button");
     updateButton.innerText = "Update";
-    
+
     buttonsContainer.appendChild(cancel);
     buttonsContainer.appendChild(updateButton);
 
@@ -303,6 +303,10 @@ function displayComments(comments) {
 
         commentText.appendChild(replyingTo);
         commentText.appendChild(commentTitle);
+
+        let editContainer = document.createElement("div");
+        editContainer.classList.add("edit-container");
+
         let buttonsContainer = document.createElement("div");
         buttonsContainer.classList.add("buttons-container");
 
@@ -329,13 +333,14 @@ function displayComments(comments) {
             replyingTo.innerText,
             ""
           );
-          container.appendChild(newInput);
-          container.appendChild(buttonsContainer);
+
+          editContainer.appendChild(newInput);
+          editContainer.appendChild(buttonsContainer);
+          container.appendChild(editContainer);
           newInput.focus();
 
           cancel.onclick = (e) => {
-            newInput.remove();
-            buttonsContainer.remove();
+            editContainer.remove();
             container.appendChild(commentText);
           };
 
@@ -632,6 +637,8 @@ function replyOnAcomment(e) {
 
         commentText.appendChild(replyingTo);
         commentText.appendChild(commentTitle);
+        let editContainer = document.createElement("div");
+        editContainer.classList.add("edit-container");
 
         let editButton = document.createElement("button");
         editButton.classList.add("edit-button");
@@ -652,14 +659,13 @@ function replyOnAcomment(e) {
 
         editButton.onclick = (e) => {
           input.value = commentText.innerText;
-          container.appendChild(input);
-          container.appendChild(buttonsContainer);
+          editContainer.appendChild(input);
+          editContainer.appendChild(buttonsContainer);
+          container.appendChild(editContainer);
           input.focus();
 
           cancel.onclick = (e) => {
-            input.remove();
-            cancel.remove();
-            updateButton.remove();
+            editContainer.remove();
             container.appendChild(replyingTo);
             container.appendChild(commentText);
           };

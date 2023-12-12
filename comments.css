@@ -104,6 +104,7 @@ button {
 
 .user-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
 }
@@ -328,9 +329,42 @@ button {
 
 @media (width < 370px) {
   .delete:before {
-    margin-left: -10px;
+    margin-left: 0px;
   }
 }
+
+@media (width < 330px) {
+  .delete:before {
+    margin-left: 20px;
+  }
+}
+
+@media (width < 295px) {
+  .edit-button:before {
+    margin-left: -15px !important;
+  }
+  .delete:before {
+    margin-left: 35px;
+  }
+}
+
+@media (width < 490px) {
+  .reply-section {
+    display: grid;
+  }
+  .reply-section img {
+    justify-self: center;
+  }
+  .reply-field {
+    display: grid;
+  }
+
+  .reply-field .buttons-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 .buttons-container {
   display: flex;
   flex-direction: column;
@@ -441,4 +475,24 @@ textarea {
   width: 100%;
   max-width: 500px;
   height: 100px;
+}
+
+.edit-container {
+  display: flex;
+  gap: 20px;
+  grid-column: 1 / 5;
+}
+
+@media (width < 400px) {
+  .edit-container {
+    display: grid;
+  }
+  .edit-container .buttons-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .send {
+    padding: 20px 25px;
+  }
 }
